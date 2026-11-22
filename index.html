@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For you</title>
+  <style>
+    body { font-family: Georgia, serif; background:#faf7f2; color:#2b2b2b;
+           display:flex; flex-direction:column; align-items:center;
+           justify-content:center; min-height:100vh; margin:0; padding:24px; text-align:center; }
+    #verse { font-size:1.4rem; line-height:1.6; max-width:480px; }
+    #ref { margin-top:12px; color:#8a7a62; }
+    #note { margin-top:24px; font-style:italic; max-width:420px; }
+    button { margin-top:32px; padding:10px 22px; border:1px solid #8a7a62;
+             background:none; border-radius:20px; font-size:1rem; }
+  </style>
+</head>
+<body>
+  <div id="verse"></div>
+  <div id="ref"></div>
+  <div id="note"></div>
+  <button onclick="show()">Another one</button>
+
+  <script>
+    const verses = [
+      { ref: "Philippians 4:6", text: "Be anxious for nothing...", note: "" },
+      { ref: "Philippians 4:7", text: "And the peace of God...", note: "Proud of you. - P" },
+      // add every verse in the chapter here
+    ];
+    let last = -1;
+    function show() {
+      let i;
+      do { i = Math.floor(Math.random() * verses.length); }
+      while (i === last && verses.length > 1);
+      last = i;
+      document.getElementById("verse").textContent = verses[i].text;
+      document.getElementById("ref").textContent = verses[i].ref;
+      document.getElementById("note").textContent = verses[i].note;
+    }
+    show();
+  </script>
+</body>
+</html>
