@@ -95,6 +95,7 @@
     <div class="actions">
       <a class="btn" id="bible" href="#" target="_blank" rel="noopener">Bible app</a>
       <a class="btn" id="tg" href="#" target="_blank" rel="noopener">Tele thoughts</a>
+      <a class="btn" id="song" href="#" target="_blank" rel="noopener" hidden>A song</a>
     </div>
   </main>
 
@@ -114,7 +115,7 @@
     const CHAPTER = 27;
 
     const VERSES = [
-      { v: 1,  text: "The Lord is my light and my salvation; whom shall I fear? The Lord is the stronghold of my life; of whom shall I be afraid?", note: "stronghold; a dwelling place when danger is imminent" },
+      { v: 1,  text: "The Lord is my light and my salvation; whom shall I fear? The Lord is the stronghold of my life; of whom shall I be afraid?", note: "stronghold; a dwelling place when danger is imminent" song: "https://open.spotify.com/track/4fspEW2gjjhfpx85RYt528?si=8d5592fd658a456c" },
       { v: 2,  text: "When evildoers assail me to eat up my flesh, my adversaries and foes, it is they who stumble and fall.", note: "a big faith while David's enemies threatened to take his life" },
       { v: 3,  text: "Though an army encamp against me, my heart shall not fear; though war arise against me, yet I will be confident.", note: "internal faith is enough to withstand external circumstances" },
       { v: 4,  text: "One thing have I asked of the Lord, that will I seek after: that I may dwell in the house of the Lord all the days of my life, to gaze upon the beauty of the Lord and to inquire in his temple.", note: "dwell with God" },
@@ -189,7 +190,10 @@
       const shareText = refText + " (ESV)\n" + item.text + "\n\nMy thoughts:\n";
       document.getElementById("tg").href = "https://t.me/share/url?url=" +
         encodeURIComponent(bibleUrl) + "&text=" + encodeURIComponent(shareText);
-    }
+
+      const songBtn = document.getElementById("song");
+      if (item.song) {songBtn.href = item.song; songBtn.hidden = false;} else {
+        songBtn.hidden = true;}};
 
     render();
   </script>
